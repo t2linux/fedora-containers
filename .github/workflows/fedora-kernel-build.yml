@@ -1,0 +1,10 @@
+name: Build OCI image 'fedora-kernel-build'
+on:
+  push:
+    paths:
+      - fedora-kernel-build/*
+jobs:
+  build-image-fedora-kernel-build:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-kernel-build"
