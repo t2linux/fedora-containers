@@ -22,6 +22,7 @@ jobs:
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: latest ${{ github.sha }}
+          context: ${{ env.IMAGE_NAME }}
           containerfiles: |
             ${{ env.IMAGE_NAME }}/Containerfile
 
