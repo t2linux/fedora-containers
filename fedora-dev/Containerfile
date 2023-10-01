@@ -1,7 +1,7 @@
 FROM fedora:38
 SHELL ["/usr/bin/bash", "-c"]
 
-RUN dnf install -y \
+RUN dnf install --quiet -y \
     koji \
     git \
     rpmdevtools \
