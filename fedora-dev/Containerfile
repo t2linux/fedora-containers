@@ -11,6 +11,10 @@ RUN dnf install --quiet -y \
     zstd createrepo \
     rpmlint \
     ShellCheck \
+    pykickstart \
+    lorax \
+    anaconda \
+    lorax-lmc-novirt \
 && dnf clean all
 
 COPY mock-defaults.cfg /etc/mock/site-defaults.cfg
