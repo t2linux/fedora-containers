@@ -17,6 +17,7 @@ RUN dnf install --quiet -y \
     anaconda \
     lorax-lmc-novirt \
     dracut-live \
+    kiwi \
 && dnf clean all
 
 COPY mock-defaults.cfg /etc/mock/site-defaults.cfg
