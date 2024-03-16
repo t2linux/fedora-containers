@@ -21,13 +21,13 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.IMAGE_NAME }}
-          tags: latest ${{ github.sha }}
+          tags: 40 ${{ github.sha }}
           context: ./${{ env.IMAGE_NAME }}
           containerfiles: |
             ${{ env.IMAGE_NAME }}/Containerfile
 
       - name: Log in to ghcr.io
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/f40'
         uses: redhat-actions/podman-login@v1
         with:
           registry: ${{ env.REGISTRY }}
@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push image to ghcr.io
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/f40'
         uses: redhat-actions/push-to-registry@v2
         with:
           image: ${{ steps.build-image.outputs.image }}
