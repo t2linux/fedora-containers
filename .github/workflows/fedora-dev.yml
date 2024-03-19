@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - f40
 jobs:
   build-image:
     uses: ./.github/workflows/build-image.yml
