@@ -4,6 +4,7 @@ SHELL ["/usr/bin/bash", "-c"]
 RUN dnf install --quiet -y \
     koji \
     git \
+    python-xmltodict \
     rpmdevtools \
     rpm-sign \
     mock \
