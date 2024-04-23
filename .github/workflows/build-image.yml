@@ -21,7 +21,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.IMAGE_NAME }}
-          tags: latest f39 ${{ github.sha }}
+          tags: latest f40 ${{ github.sha }}
           context: ./${{ env.IMAGE_NAME }}
           containerfiles: |
             ${{ env.IMAGE_NAME }}/Containerfile
