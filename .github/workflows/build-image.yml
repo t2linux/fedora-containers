@@ -5,6 +5,9 @@ on:
       image_name:
         type: string
         required: true
+      tags:
+        type: string
+        required: true
 
 jobs:
   build-image:
@@ -21,7 +24,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.IMAGE_NAME }}
-          tags: latest f40 ${{ github.sha }}
+          tags: ${{ inputs.tags }}
           context: ./${{ env.IMAGE_NAME }}
           containerfiles: |
             ${{ env.IMAGE_NAME }}/Containerfile

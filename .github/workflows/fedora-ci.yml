@@ -1,11 +1,11 @@
-name: Build image 'fedora-dev'
+name: Build image 'fedora-ci'
 on:
   push:
     branches:
       - main
-      - f40
 jobs:
   build-image:
     uses: ./.github/workflows/build-image.yml
     with:
-      image_name: "fedora-dev"
+      image_name: "fedora-ci"
+      tags: unstable ${{ github.sha }}
