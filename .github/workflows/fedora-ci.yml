@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'fedora-ci/*'
 jobs:
   build-image:
     uses: ./.github/workflows/build-image.yml
