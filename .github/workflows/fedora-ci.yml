@@ -8,5 +8,6 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       image_name: "fedora-ci"
-      tags: unstable ${{ github.sha }}
+      tags: unstable
+      publish: ${{ github.ref == 'refs/heads/main' }}
       branch: main

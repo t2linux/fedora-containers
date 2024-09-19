@@ -1,0 +1,20 @@
+name: Update all images
+on:
+  schedule:
+    # Every day at 2:49 AM
+    - cron: "49 2 * * *"
+
+jobs:
+  fedora-ci-40:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-ci"
+      tags: "40"
+      branch: f40
+
+  fedora-ci-unstable:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-ci"
+      tags: unstable
+      branch: main

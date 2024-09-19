@@ -11,6 +11,10 @@ on:
       branch:
         type: string
         required: true
+      publish:
+        type: boolean
+        default: false
+        required: false
 
 jobs:
   build-image:
@@ -35,7 +39,7 @@ jobs:
             ${{ env.IMAGE_NAME }}/Containerfile
 
       - name: Log in to ghcr.io
-        if: github.ref == 'refs/heads/main'
+        if: inputs.publish == true
         uses: redhat-actions/podman-login@v1
         with:
           registry: ${{ env.REGISTRY }}
@@ -43,7 +47,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push image to ghcr.io
-        if: github.ref == 'refs/heads/main'
+        if: inputs.publish == true
         uses: redhat-actions/push-to-registry@v2
         with:
           image: ${{ steps.build-image.outputs.image }}
