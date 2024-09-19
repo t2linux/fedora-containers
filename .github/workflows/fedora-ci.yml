@@ -9,3 +9,4 @@ jobs:
     with:
       image_name: "fedora-ci"
       tags: unstable ${{ github.sha }}
+      branch: main
