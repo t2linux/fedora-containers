@@ -18,3 +18,10 @@ jobs:
       image_name: "fedora-ci"
       tags: unstable
       branch: main
+
+  fedora-silverblue-unstable:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-silverblue"
+      tags: unstable
+      branch: main
