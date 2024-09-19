@@ -20,6 +20,7 @@ RUN dnf install --quiet -y \
     lorax-lmc-novirt \
     dracut-live \
     kiwi \
+    tito \
 && dnf clean all
 
 COPY mock-defaults.cfg /etc/mock/site-defaults.cfg
