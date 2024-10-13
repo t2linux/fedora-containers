@@ -10,6 +10,7 @@ jobs:
     with:
       image_name: "fedora-ci"
       tags: "40"
+      publish: true
       branch: f40
 
   fedora-ci-unstable:
@@ -17,6 +18,7 @@ jobs:
     with:
       image_name: "fedora-ci"
       tags: unstable
+      publish: true
       branch: main
 
   fedora-silverblue-unstable:
@@ -24,4 +26,5 @@ jobs:
     with:
       image_name: "fedora-silverblue"
       tags: unstable
+      publish: true
       branch: main
