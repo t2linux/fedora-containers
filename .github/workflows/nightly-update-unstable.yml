@@ -13,6 +13,14 @@ jobs:
       publish: true
       branch: main
 
+  fedora-bootc:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-bootc"
+      tags: unstable
+      publish: true
+      branch: main
+
   fedora-silverblue:
     uses: ./.github/workflows/build-image.yml
     with:
