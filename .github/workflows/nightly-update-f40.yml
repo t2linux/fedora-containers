@@ -1,0 +1,14 @@
+name: Update f40 images
+on:
+  schedule:
+    # Every day at 2:49 AM
+    - cron: "49 2 * * *"
+
+jobs:
+  fedora-ci:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-ci"
+      tags: "40"
+      publish: true
+      branch: f40
