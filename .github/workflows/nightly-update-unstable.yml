@@ -1,0 +1,31 @@
+name: Update unstable images
+on:
+  schedule:
+    # Every day at 2:49 AM
+    - cron: "49 2 * * *"
+
+jobs:
+  fedora-ci:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-ci"
+      tags: unstable
+      publish: true
+      branch: main
+
+  fedora-bootc:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-bootc"
+      tags: unstable
+      publish: true
+      branch: main
+
+  fedora-silverblue:
+    uses: ./.github/workflows/build-image.yml
+    needs: fedora-bootc
+    with:
+      image_name: "fedora-silverblue"
+      tags: unstable
+      publish: true
+      branch: main

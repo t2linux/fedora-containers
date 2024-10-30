@@ -1,0 +1,22 @@
+name: Update f41 images
+on:
+  schedule:
+    # Every day at 2:49 AM
+    - cron: "49 2 * * *"
+
+jobs:
+  fedora-ci:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-ci"
+      tags: '41'
+      publish: true
+      branch: f41
+
+  fedora-silverblue:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-silverblue"
+      tags: '41'
+      publish: true
+      branch: f41

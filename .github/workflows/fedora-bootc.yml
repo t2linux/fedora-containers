@@ -1,0 +1,15 @@
+name: Build image 'fedora-bootc'
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'fedora-bootc/*'
+jobs:
+  build-image:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-bootc"
+      tags: unstable
+      publish: ${{ github.ref == 'refs/heads/main' }}
+      branch: main
