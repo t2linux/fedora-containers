@@ -23,6 +23,7 @@ jobs:
 
   fedora-silverblue:
     uses: ./.github/workflows/build-image.yml
+    needs: fedora-bootc
     with:
       image_name: "fedora-silverblue"
       tags: unstable
