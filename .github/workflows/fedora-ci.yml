@@ -2,7 +2,7 @@ name: Build image 'fedora-ci'
 on:
   push:
     branches:
-      - main
+      - f41
     paths:
       - 'fedora-ci/*'
 jobs:
@@ -10,6 +10,6 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       image_name: "fedora-ci"
-      tags: unstable
-      publish: ${{ github.ref == 'refs/heads/main' }}
-      branch: main
+      tags: "41"
+      publish: ${{ github.ref == 'refs/heads/f41' }}
+      branch: f41
