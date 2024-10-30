@@ -13,6 +13,22 @@ jobs:
       publish: true
       branch: f40
 
+  fedora-ci-41:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-ci"
+      tags: '41'
+      publish: true
+      branch: f41
+
+  fedora-silverblue-41:
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: "fedora-silverblue"
+      tags: '41'
+      publish: true
+      branch: f41
+
   fedora-ci-unstable:
     uses: ./.github/workflows/build-image.yml
     with:
