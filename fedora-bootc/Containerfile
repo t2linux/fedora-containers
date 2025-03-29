@@ -1,0 +1,10 @@
+FROM quay.io/fedora/fedora-bootc:41
+
+COPY copr-sharpenedblade-t2linux.repo /etc/yum.repos.d/
+
+RUN \
+    dnf swap -y \
+        --repo copr-sharpenedblade-t2linux --allowerasing \
+        kernel-core kernel-core && \
+    dnf install -y t2linux-release t2linux-repos && \
+    dnf clean all
