@@ -1,5 +1,6 @@
 name: Update all images
 on:
+  workflow_dispatch:
   schedule:
     # Every day at 2:49 AM
     - cron: "49 2 * * *"
