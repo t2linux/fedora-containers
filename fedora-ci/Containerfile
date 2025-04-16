@@ -21,6 +21,9 @@ RUN dnf install --quiet -y \
     dracut-live \
     kiwi \
     tito \
+    xorriso \
+    erofs-utils \
+    qemu-img \
 && dnf clean all
 
 COPY mock-defaults.cfg /etc/mock/site-defaults.cfg
