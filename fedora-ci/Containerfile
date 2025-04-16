@@ -24,6 +24,7 @@ RUN dnf install --quiet -y \
     xorriso \
     erofs-utils \
     qemu-img \
+    kiwi-boxed-plugin \
 && dnf clean all
 
 COPY mock-defaults.cfg /etc/mock/site-defaults.cfg
