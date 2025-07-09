@@ -6,54 +6,19 @@ on:
     - cron: "49 2 * * *"
 
 jobs:
-  fedora-ci-41:
+  build-images:
+    strategy:
+      matrix:
+        image: ["fedora-ci", "fedora-silverblue"]
+        release: [ "41", "42", "unstable" ]
     uses: ./.github/workflows/build-image.yml
     with:
-      image_name: "fedora-ci"
-      tags: '41'
+      image_name: ${{ matrix.image }}
+      tags: ${{ matrix.release }}
       publish: true
-      branch: f41
-
-  fedora-ci-42:
-    uses: ./.github/workflows/build-image.yml
-    with:
-      image_name: "fedora-ci"
-      tags: "42"
-      publish: true
-      branch: f42
-
-  fedora-silverblue-41:
-    uses: ./.github/workflows/build-image.yml
-    with:
-      image_name: "fedora-silverblue"
-      tags: '41'
-      publish: true
-      branch: f41
-
-  fedora-silverblue-42:
-    uses: ./.github/workflows/build-image.yml
-    with:
-      image_name: "fedora-silverblue"
-      tags: '42'
-      publish: true
-      branch: f42
-
-  fedora-ci-unstable:
-    uses: ./.github/workflows/build-image.yml
-    with:
-      image_name: "fedora-ci"
-      tags: unstable
-      publish: true
-      branch: main
-
-  fedora-silverblue-unstable:
-    uses: ./.github/workflows/build-image.yml
-    with:
-      image_name: "fedora-silverblue"
-      tags: unstable
-      publish: true
-      branch: main
+      branch: "${{ contains(matrix.release, 'unstable') && 'main' || format('f{0}', matrix.release) }}"
   cleanup-old-images:
+    needs: [ "build-images" ]
     runs-on: ubuntu-latest
     steps:
     - uses: "actions/delete-package-versions@v5"
