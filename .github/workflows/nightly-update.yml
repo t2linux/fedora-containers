@@ -6,14 +6,6 @@ on:
     - cron: "49 2 * * *"
 
 jobs:
-  fedora-ci-40:
-    uses: ./.github/workflows/build-image.yml
-    with:
-      image_name: "fedora-ci"
-      tags: "40"
-      publish: true
-      branch: f40
-
   fedora-ci-41:
     uses: ./.github/workflows/build-image.yml
     with:
