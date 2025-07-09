@@ -53,3 +53,18 @@ jobs:
       tags: unstable
       publish: true
       branch: main
+  cleanup-old-images:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: "actions/delete-package-versions@v5"
+      with:
+        package-name: fedora-ci
+        package-type: container
+        delete-only-untagged-versions: true
+        min-versions-to-keep: 3
+    - uses: "actions/delete-package-versions@v5"
+      with:
+        package-name: fedora-silverblue
+        package-type: container
+        delete-only-untagged-versions: true
+        min-versions-to-keep: 3
