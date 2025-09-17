@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         image: ["fedora-ci", "fedora-silverblue"]
-        release: [ "41", "42", "unstable" ]
+        release: [ "41", "42", "43", "unstable" ]
     uses: ./.github/workflows/build-image.yml
     with:
       image_name: ${{ matrix.image }}
