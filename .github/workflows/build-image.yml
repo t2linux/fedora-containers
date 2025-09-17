@@ -1,5 +1,20 @@
 name: Build and publish OCI image
 on:
+  workflow_dispatch:
+    inputs:
+      image_name:
+        type: string
+        description: Image name
+        required: true
+      tags:
+        type: string
+        description: Image tag
+        required: true
+      publish:
+        type: boolean
+        description: Whether to publish the image
+        default: false
+        required: false
   workflow_call:
     inputs:
       image_name:
