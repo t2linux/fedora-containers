@@ -1,0 +1,29 @@
+FROM fedora:42
+SHELL ["/usr/bin/bash", "-c"]
+
+RUN dnf install --quiet -y \
+    koji \
+    fedpkg \
+    git \
+    python-xmltodict \
+    rpmdevtools \
+    rpm-sign \
+    mock \
+    ccache \
+    zstd \
+    createrepo \
+    rpmlint \
+    ShellCheck \
+    pykickstart \
+    lorax \
+    anaconda \
+    lorax-lmc-novirt \
+    dracut-live \
+    kiwi \
+    tito \
+    xorriso \
+    erofs-utils \
+    qemu-img \
+&& dnf clean all
+
+COPY mock-defaults.cfg /etc/mock/site-defaults.cfg

@@ -8,9 +8,6 @@ on:
       tags:
         type: string
         required: true
-      branch:
-        type: string
-        required: true
       publish:
         type: boolean
         default: false
@@ -22,21 +19,20 @@ jobs:
     env:
       REGISTRY: ghcr.io
       IMAGE_NAME: ${{ inputs.image_name }}
+      TAGS: ${{ inputs.tags}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: ${{ inputs.branch }}
 
       - name: Build image
         id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.IMAGE_NAME }}
-          tags: ${{ inputs.tags }}
+          tags: ${{ env.TAGS }}
           context: ./${{ env.IMAGE_NAME }}
           containerfiles: |
-            ${{ env.IMAGE_NAME }}/Containerfile
+            ${{ env.IMAGE_NAME }}/${{ env.TAGS }}/Containerfile
 
       - name: Log in to ghcr.io
         if: inputs.publish == true

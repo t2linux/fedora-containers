@@ -16,7 +16,6 @@ jobs:
       image_name: ${{ matrix.image }}
       tags: ${{ matrix.release }}
       publish: true
-      branch: "${{ contains(matrix.release, 'unstable') && 'main' || format('f{0}', matrix.release) }}"
   cleanup-old-images:
     needs: [ "build-images" ]
     runs-on: ubuntu-latest
