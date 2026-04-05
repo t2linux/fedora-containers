@@ -1,4 +1,4 @@
-FROM fedora:41
+FROM quay.io/fedora/fedora:44
 SHELL ["/usr/bin/bash", "-c"]
 
 RUN dnf install --quiet -y \
