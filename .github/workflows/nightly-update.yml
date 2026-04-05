@@ -33,3 +33,11 @@ jobs:
         package-type: container
         delete-only-untagged-versions: true
         min-versions-to-keep: 3
+  workflow-keepalive:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: liskin/gh-workflow-keepalive@7a9194bad497f0b993708eeaf10fc0a2d726eb71
+
