@@ -18,6 +18,7 @@ jobs:
       tags: ${{ matrix.release }}
       publish: true
   build-images-2:
+    needs: [ "build-images-1" ]
     strategy:
       matrix:
         image: [ "fedora-silverblue-installer"]
@@ -33,7 +34,7 @@ jobs:
       matrix:
         image: ["fedora-ci", "fedora-silverblue", "fedora-silverblue-installer"]
       fail-fast: false
-    needs: [ "build-images" ]
+    needs: [ "build-images-2" ]
     runs-on: ubuntu-latest
     steps:
     - uses: "actions/delete-package-versions@v5"
