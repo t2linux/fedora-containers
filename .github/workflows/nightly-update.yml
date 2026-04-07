@@ -9,7 +9,7 @@ jobs:
   build-images:
     strategy:
       matrix:
-        image: ["fedora-ci", "fedora-silverblue"]
+        image: ["fedora-ci", "fedora-silverblue", "fedora-silverblue-installer"]
         release: [ "42", "43", "unstable" ]
       fail-fast: false
     uses: ./.github/workflows/build-image.yml
@@ -18,18 +18,16 @@ jobs:
       tags: ${{ matrix.release }}
       publish: true
   cleanup-old-images:
+    strategy:
+      matrix:
+        image: ["fedora-ci", "fedora-silverblue", "fedora-silverblue-installer"]
+      fail-fast: false
     needs: [ "build-images" ]
     runs-on: ubuntu-latest
     steps:
     - uses: "actions/delete-package-versions@v5"
       with:
-        package-name: fedora-ci
-        package-type: container
-        delete-only-untagged-versions: true
-        min-versions-to-keep: 3
-    - uses: "actions/delete-package-versions@v5"
-      with:
-        package-name: fedora-silverblue
+        package-name: ${{ matrix.image }}
         package-type: container
         delete-only-untagged-versions: true
         min-versions-to-keep: 3
