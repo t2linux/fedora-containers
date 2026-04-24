@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         image: ["fedora-ci", "fedora-silverblue"]
-        release: [ "42", "43",  ]
+        release: [ "42", "43",  "44", "unstable" ]
       fail-fast: false
     uses: ./.github/workflows/build-image.yml
     with:
@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         image: [ "fedora-silverblue-installer"]
-        release: [ "43", ]
+        release: [ "43", "44", "unstable" ]
       fail-fast: false
     uses: ./.github/workflows/build-image.yml
     with:
