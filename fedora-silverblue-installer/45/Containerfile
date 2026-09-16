@@ -1,4 +1,4 @@
-FROM ghcr.io/t2linux/fedora-silverblue:unstable
+FROM ghcr.io/t2linux/fedora-silverblue:45
 
 RUN dnf install -y \
      anaconda \
