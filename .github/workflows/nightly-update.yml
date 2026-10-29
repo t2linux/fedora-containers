@@ -9,8 +9,8 @@ jobs:
   build-images-1:
     strategy:
       matrix:
-        image: ["fedora-ci", "fedora-silverblue"]
-        release: [ "43",  "44", "45" ]
+        image: ["fedora-silverblue"]
+        release: [ "43",  "44" ]
       fail-fast: false
     uses: ./.github/workflows/build-image.yml
     with:
@@ -22,7 +22,18 @@ jobs:
     strategy:
       matrix:
         image: [ "fedora-silverblue-installer"]
-        release: [ "44", "45" ]
+        release: [ "44" ]
+      fail-fast: false
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_name: ${{ matrix.image }}
+      tags: ${{ matrix.release }}
+      publish: true
+  build-images-3:
+    strategy:
+      matrix:
+        image: ["fedora-ci"]
+        release: [ "43",  "44", "45" ]
       fail-fast: false
     uses: ./.github/workflows/build-image.yml
     with:
